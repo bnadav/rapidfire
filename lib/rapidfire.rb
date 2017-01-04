@@ -10,6 +10,8 @@ module Rapidfire
   mattr_accessor :answers_delimiter
   self.answers_delimiter = "\r\n"
 
+  mattr_accessor :after_attempt_path
+
   def self.config
     yield(self)
   end
