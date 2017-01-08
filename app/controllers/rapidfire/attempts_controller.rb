@@ -1,6 +1,6 @@
 module Rapidfire
   class AttemptsController < Rapidfire::ApplicationController
-    before_filter :find_survey!
+    before_filter :find_survey!, :can_take_survey?
 
     def new
       @attempt_builder = AttemptBuilder.new(attempt_params)
@@ -10,8 +10,8 @@ module Rapidfire
       @attempt_builder = AttemptBuilder.new(attempt_params)
 
       if @attempt_builder.save
+        Rapidfire.after_attempt.call(current_user)
         redirect_to after_attempt_path
-        #redirect_to surveys_path
       else
         render :new
       end
@@ -26,9 +26,22 @@ module Rapidfire
       Rapidfire.after_attempt_path || surveys_path
     end
 
+    def current_user
+      send(Rapidfire.current_user_getter)
+    end
+
+    def can_administer?
+      Rapidfire.can_administer.call(current_user) 
+    end
+
+    def can_take_survey?
+      head 403 unless Rapidfire.before_attempt.call(current_user) 
+    end
+
     def attempt_params
       answer_params = { params: (params[:attempt] || {}) }
       answer_params.merge(user: current_user, survey: @survey)
     end
+
   end
 end
