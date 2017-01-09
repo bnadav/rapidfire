@@ -17,6 +17,8 @@ module Rapidfire
       end
     end
 
+    alias_method :app_current_user, Rapidfire.current_user_getter
+
     private
     def find_survey!
       @survey = Survey.find(params[:survey_id])
@@ -27,7 +29,7 @@ module Rapidfire
     end
 
     def current_user
-      send(Rapidfire.current_user_getter)
+      app_current_user
     end
 
     def can_administer?
