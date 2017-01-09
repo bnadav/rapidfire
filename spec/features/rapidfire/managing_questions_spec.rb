@@ -4,13 +4,16 @@ describe "Questions" do
   let(:survey)  { FactoryGirl.create(:survey, name: "Question Set") }
   let(:question1)  { FactoryGirl.create(:q_long,  survey: survey, question_text: "Long Question")  }
   let(:question2)  { FactoryGirl.create(:q_short, survey: survey, question_text: "Short Question") }
+  let(:admin_unauthorized) { Rapidfire.can_administer = lambda{ |current_user| false } }
+  let(:admin_authorized) { Rapidfire.can_administer = lambda{ |current_user| true } }
   before do
     [question1, question2]
   end
 
   describe "DELETE Question" do
     before do
-      allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      #allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      admin_authorized
       visit rapidfire.survey_questions_path(survey)
 
       page.within("#question_#{question1.id}") do
@@ -25,7 +28,8 @@ describe "Questions" do
 
   describe "CREATING Question" do
     before do
-      allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      #allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      admin_authorized
       visit rapidfire.survey_questions_path(survey)
       click_link "New Question"
     end
@@ -61,7 +65,8 @@ describe "Questions" do
 
   describe "UPDATING Question" do
     before do
-      allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      #allow_any_instance_of(ApplicationController).to receive(:can_administer?).and_return(true)
+      admin_authorized
       visit rapidfire.survey_questions_path(survey)
       page.within("#question_#{question1.id}") do
         click_link "Edit"

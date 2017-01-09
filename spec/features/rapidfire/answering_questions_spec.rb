@@ -19,8 +19,10 @@ describe "Surveys" do
   context "Authorized by main app" do
     let(:custom_after_path)  { Rapidfire.after_attempt_path = "/rapidfire" }
     let(:default_after_path) { Rapidfire.after_attempt_path = nil }
+    let(:allow_survey) { Rapidfire.before_attempt = lambda{ |current_user| true }}
 
     before do |example|
+      allow_survey
       [question1, question2]
 
       if example.metadata[:custom_path]

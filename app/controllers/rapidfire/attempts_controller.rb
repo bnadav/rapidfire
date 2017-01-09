@@ -17,7 +17,6 @@ module Rapidfire
       end
     end
 
-    alias_method :app_current_user, Rapidfire.current_user_getter
 
     private
     def find_survey!
@@ -26,14 +25,6 @@ module Rapidfire
 
     def after_attempt_path
       Rapidfire.after_attempt_path || surveys_path
-    end
-
-    def current_user
-      app_current_user
-    end
-
-    def can_administer?
-      Rapidfire.can_administer.call(current_user) 
     end
 
     def can_take_survey?
