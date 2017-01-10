@@ -2,12 +2,17 @@
 [![Code Climate](https://codeclimate.com/github/code-mancers/rapidfire/badges/gpa.svg)](https://codeclimate.com/github/code-mancers/rapidfire)
 [![Build Status](https://travis-ci.org/code-mancers/rapidfire.png?branch=master)](https://travis-ci.org/code-mancers/rapidfire)
 
+
+## Note
+This is a fork of the Rapidfire projects with some changes that may be incomatible
+with the original!
+If you want to use the original gem find it [here](https://github.com/code-mancers/rapidfire)
+
+
+## Descritption
 One stop solution for all survey related requirements! Its tad easy!
 
 This gem supports **rails 3.2.13+**, **rails4** and **rails5** versions.
-
-You can see a demo of this gem [here](https://rapidfire.herokuapp.com).
-And the source code of demo [here](https://github.com/code-mancers/rapidfire-demo).
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -28,6 +33,13 @@ And if you want to customize rapidfire views, you can do
 
     $ bundle exec rails generate rapidfire:views
 
+If you want to change the default configuration options do
+
+    $ bundle exec rails generate rapidfire:initializer
+
+this will create the config/initializers/rapidfire_init.rb in the main app directory.
+All options in this file are commented out. The comments containg short explanations regarding thier usage (see also below)
+
 ## Usage
 
 Add this line to your routes will and you will be good to go!
@@ -38,12 +50,9 @@ Add this line to your routes will and you will be good to go!
 
 And point your browser to [http://localhost:3000/rapidfire](http://localhost:3000/rapidfire)
 
-All rapidfire controllers inherit from your `ApplicationController`. So define 2
-methods `current_user` and `can_administer?` on your `ApplicationController`
-
-1. `current_user` : the user who is answering the survey. can be `nil`
-2. `can_administer?` : a method which determines whether current user can
-   create/update survey questions.
+All rapidfire controllers inherit from your `ApplicationController`. 
+Rapidfire expects a method to exists in your `ApplicationController` that returns
+the a record representing the user of the gem. By defualt this methos is named `current_user`.
 
 Typical implementation would be:
 
@@ -52,15 +61,42 @@ Typical implementation would be:
     def current_user
       @current_user ||= User.find(session[:user_id])
     end
-
-    def can_administer?
-      current_user.try(:admin?)
-    end
   end
 ```
 
-If you are using authentication gems like devise, you get `current_user` for free
-and you don't have to define it.
+The method name can be customized in the initializer file. 
+For instance if a sruvey respondent is an `examinee` rather then a `user`, it may be clearer to 
+to fetch the record using a method named `current_examinee`.
+So in rapidfire_init.rb write: 
+
+```rb
+    config.current_user_getter = :current_examinee
+```
+
+If you are using authentication gems like devise and you stick to the default naming, 
+you get `current_user` for free and you don't have to define it.
+
+
+### Configuration options
+Configurations can be set in config/initializers/rapidfire_init.rb, as follows:
+See longer documentation in the generated initializer.
+By defalut all options are commented out - See defaults in initializer comments.
+Below are some possible modifications, for demonstration:
+
+```rb
+  Rapidfire.config do |config|
+    # path to go, after successful completion of survey
+    config.after_attempt_path = "/login"
+    # attempt taking guard (survey is not ran when lambda returns falsy value)
+    config.before_attempt = lambda{ |user| user.can_take_survey? }
+    # end of survey notifier
+    config.after_attempt = lambda{ |user| user.survey_taken! }
+    # is current user authorized to administer surveys ?
+    config.can_administer = lambda{ |user| user.administrator? }
+    # name of getter method in `ApplicationController` which returns survey's `current user`
+    config.current_user_getter = :survey_respondent
+  end
+```
 
 ### Routes Information
 Once this gem is mounted on, say at 'rapidfire', it generates several routes
@@ -84,6 +120,7 @@ A new api is released which helps in seeing results for each survey. The api is:
 ```
   GET /rapidfire/surveys/<survey-id>/results
 ```
+
 This new api supports two formats: `html` and `json`. The `json` format is supported
 so that end user can use any javascript based chart solutions and render results
 in the format they pleased. An example can be seen [here](https://github.com/code-mancers/rapidfire-demo),
