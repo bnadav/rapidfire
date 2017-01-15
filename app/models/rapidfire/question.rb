@@ -26,6 +26,10 @@ module Rapidfire
       validation_rules || {}
     end
 
+    def grid_kernel?
+      grid_view? && introduction.present?
+    end
+
     # answer will delegate its validation to question, and question
     # will inturn add validations on answer on the fly!
     def validate_answer(answer)

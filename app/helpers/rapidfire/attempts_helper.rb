@@ -1,8 +1,11 @@
 module Rapidfire
 
   module AttemptsHelper
-    def grid_class(question)
-      question.grid_view? ? "grid" : ""
+    def grid_classes(question)
+      classes = ""
+      classes << "grid " if question.grid_view?
+      classes << "kernel " if question.grid_kernel?
+      classes
     end
   end
 
