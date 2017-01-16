@@ -51,7 +51,9 @@ If you want to create basic styling of surveys in your app, you can copy some as
 This will create two files in the main app: 
   app/assets/stylesheets/rapidfire.scss
   app/assets/javascripts/rapidfire.js
-Note: The generated scss file is based on bootstrap. You will need to include the bootstrap-sass gem in your Gemfile in order for it to work.
+
+Note: The generated scss file is based on bootstrap. 
+You will need to include the bootstrap-sass gem in your Gemfile in order for it to work.
 
 
 ## Usage
