@@ -231,6 +231,15 @@ The typical flow about how to use this gem is:
 6. Note that answers fail to persist of the criteria that you have provided while
    creating questions fail.
 
+# Grid view
+Consecutive questions, with the same answer options, can be marked to be displayed in a 'grid-view'.
+This means that the answer options labels wont be displayed separately for each question but rather as headers
+of columns. The first question in the grid must also have some text content in the 'introduction' field.
+This field will be displayed as the header of the grid.
+**Note:** The entire mechanism of transforming displaying grid is based on css. The sole operation of the backend
+side is adding extra HTML classes to the question wrapper: 'grid' class for all gird questions, and 'kernel'
+class to grid question that has also introduction content.
+
 
 ## Notes on upgrading
 
