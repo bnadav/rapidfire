@@ -1,4 +1,13 @@
 he:
+  helpers:
+    label:
+      rapidfire_question:
+        type: "סוג"
+        question_text: "תוכן השאלה"
+        position: "מיקום"
+        answer_options: "אפשרויות תשובה"
+        grid_view: "פועל"
+        introduction: "גזע"
   rapidfire:
     attempts:
       header: "נא לענות על השאלות הבאות"
@@ -7,4 +16,5 @@ he:
       header: "רשימת השאלות"
       new: "שאלה חדשה"
       question: "השאלה"
+      grid_view: "תצוגת מטריצה"
 

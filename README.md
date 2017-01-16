@@ -41,8 +41,18 @@ If you want to change the default configuration options do
 
     $ bundle exec rails generate rapidfire:initializer
 
-this will create the config/initializers/rapidfire_init.rb in the main app directory.
-All options in this file are commented out. The comments containg short explanations regarding thier usage (see also below)
+This will create the config/initializers/rapidfire_init.rb in the main app directory.
+All options in this file are commented out. The comments contain short explanations regarding their usage (see also below)
+
+If you want to create basic styling of surveys in your app, you can copy some assets
+ 
+    $ bundle exec rails generate rapidfire:assets
+
+This will create two files in the main app: 
+  app/assets/stylesheets/rapidfire.scss
+  app/assets/javascripts/rapidfire.js
+Note: The generated scss file is based on bootstrap. You will need to include the bootstrap-sass gem in your Gemfile in order for it to work.
+
 
 ## Usage
 

@@ -4,7 +4,6 @@ require 'rails/generators'
 module Rapidfire
   module Generators
     class InitializerGenerator < Rails::Generators::Base
-      source_root File.expand_path('../templates', __FILE__)
       source_root File.expand_path('../../../../config/initializers/', __FILE__)
       desc "This generator creates an initializer file at config/initializers/rapidfire_init.rb"
 

@@ -1,0 +1,120 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+//@import "bootstrap-rtl";
+
+$grid_question_text_width: 180px;
+$grid_answer_text_width:  120px;
+$grid_question_vertical_margins: 6px;
+$grid_top_answers_vertical_offset: 20px + 2*$grid_question_vertical_margins;
+$grid_top_answers_left_offset: 14px;
+
+
+body {
+  //direction: rtl;
+}
+
+form.new_attempt {
+  // Regular non grid questions
+  div[class*='question']:not(.grid) {
+    @extend .well;
+    label {
+      display: block;
+    }
+  }
+
+  div[class*='question'] {
+    position: relative;
+  }
+
+  span.introduction {
+    position: absolute;
+    bottom: calc(2.25 * #{$grid_top_answers_vertical_offset});
+    font-weight: bold;
+    // bottom: 45px;
+  }
+
+
+  // grid questions
+  div.grid {
+    // .well colors
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-top: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+
+    .question_text, .introduction {
+      display: inline-block;
+    }
+
+    .question_text {
+      width: $grid_question_text_width;
+      margin: $grid_question_vertical_margins 19px;
+      //margin: 2px 19px;
+    }
+
+    .introduction {
+      width: 100%;
+    }
+
+    label {
+      display: inline-block;
+      span {
+        width: $grid_answer_text_width;
+        display: inline-block;
+        visibility: hidden;
+      }
+    }
+  }
+
+  div.grid.kernel {
+    position: relative;
+    margin-top: calc(2.5 * #{$grid_top_answers_vertical_offset});
+    //margin-top: 60px;
+    border-top: 1px solid #e3e3e3;
+
+    label span {
+      visibility: unset;
+      position: relative;
+      bottom: $grid_top_answers_vertical_offset;
+      left: $grid_top_answers_left_offset;
+    }
+
+  }
+
+  div[class*='question'].grid + div:not(.grid) {
+    margin-top: 20px;
+  }
+
+  input[type='submit'] {
+    @extend .btn-primary;
+    @extend .btn-lg;
+    display: block;
+    margin: 20px 0;
+  }
+}
+
+form.new_rapidfire_question, form.edit_rapidfire_question {
+  input, select, textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+  label[for='rapidfire_question_introduction'] {
+    display: block;
+    width: 10em;
+  }
+  fieldset {
+    width: 15em;
+    border: 1px solid #DDDDDD;
+    padding: 5px;
+    legend {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    input[type='checkbox'] {
+      display: inline-block;
+    }
+
+  }
+}

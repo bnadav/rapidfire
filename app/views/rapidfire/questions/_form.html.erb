@@ -1,6 +1,6 @@
 <h3>Question</h3>
 
-<%= form_for form, as: :question, url: url, method: method do |f| %>
+<%= form_for form, as: :rapidfire_question, url: url, method: method do |f| %>
   <%- unless form.errors.empty? %>
     <ul>
       <%- form.errors.full_messages.each do |message| %>
@@ -20,12 +20,15 @@
 
   <%= f.label :answer_options %>
   <%= f.text_area :answer_options, rows: 5 %>
+  <fieldset>
+    <legend><%= t('rapidfire.questions.grid_view') -%></legend>
+    <%= f.label :grid_view %>
+    <%= f.check_box :grid_view %>
 
-  <%= f.label :introduction %>
-  <%= f.text_field :introduction %>
+    <%= f.label :introduction %>
+    <%= f.text_field :introduction %>
+  </fieldset>
 
-  <%= f.label :grid_view %>
-  <%= f.check_box :grid_view %>
 
   <h4>Other options</h4>
   <hr/>
