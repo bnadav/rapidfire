@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130502195504) do
+ActiveRecord::Schema.define(version: 20170112113130) do
 
   create_table "rapidfire_answers", force: :cascade do |t|
     t.integer  "attempt_id"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20130502195504) do
     t.text     "validation_rules"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "grid_view",        default: false
+    t.string   "introduction"
     t.index ["survey_id"], name: "index_rapidfire_questions_on_survey_id"
   end
 

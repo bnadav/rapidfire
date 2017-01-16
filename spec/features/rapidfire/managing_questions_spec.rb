@@ -36,9 +36,9 @@ describe "Questions" do
 
     context "when name is present" do
       before do
-        page.within("#new_question") do
-          fill_in "question_question_text",  with: "Which OS?"
-          fill_in "question_answer_options", with: "mac\r\nwindows"
+        page.within("#new_rapidfire_question") do
+          fill_in "rapidfire_question_question_text",  with: "Which OS?"
+          fill_in "rapidfire_question_answer_options", with: "mac\r\nwindows"
           click_button "Create Question"
         end
       end
@@ -50,13 +50,13 @@ describe "Questions" do
 
     context "when name is not present" do
       before do
-        page.within("#new_question") do
+        page.within("#new_rapidfire_question") do
           click_button "Create Question"
         end
       end
 
       it "fails to create survey" do
-        page.within("#new_question") do
+        page.within("#new_rapidfire_question") do
           expect(page).to have_content "can't be blank"
         end
       end
@@ -75,7 +75,7 @@ describe "Questions" do
 
     context "when name is modified" do
       before do
-        fill_in "question_question_text",  with: "Updated Question"
+        fill_in "rapidfire_question_question_text",  with: "Updated Question"
         click_button "Update Question"
       end
 
@@ -88,7 +88,7 @@ describe "Questions" do
 
     context "when name is not present" do
       before do
-        fill_in "question_question_text",  with: ""
+        fill_in "rapidfire_question_question_text",  with: ""
         click_button "Update Question"
       end
 
