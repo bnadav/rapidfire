@@ -4,7 +4,9 @@
 <%= f.span(:question_text) %>
 <%= f.fields_for :answer_text do |af| %>
   <%- answer.question.options.each do |option| %>
-    <%= af.label option do %>
+    <%= label_tag do %>
+    <%= #af.label option do
+    %>
       <%= af.check_box nil, { id: nil, checked: checkbox_checked?(answer, option) }, option %>
       <span><%= option %></span>
     <% end %>
