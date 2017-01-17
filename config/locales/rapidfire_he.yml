@@ -17,6 +17,8 @@ he:
       new: "שאלה חדשה"
       question: "השאלה"
       grid_view: "תצוגת מטריצה"
+      select:
+        prompt: "בחר/י"
   activerecord:
     errors:
       models:

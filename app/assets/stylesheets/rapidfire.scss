@@ -11,15 +11,19 @@ $grid_top_answers_left_offset: 14px;
 
 
 body {
-  //direction: rtl;
+  direction: rtl;
 }
 
 form.new_attempt {
   // Regular non grid questions
-  div[class*='question']:not(.grid) {
+  .question:not(.grid) {
     @extend .well;
     label {
       display: block;
+    }
+    input[type='text'], select, textarea {
+      display: inline-block;
+      margin: 0 10px;
     }
   }
 
