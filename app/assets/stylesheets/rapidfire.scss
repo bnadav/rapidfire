@@ -3,7 +3,7 @@
 @import "bootstrap";
 //@import "bootstrap-rtl";
 
-$grid_question_text_width: 180px;
+$grid_question_text_width: 280px;
 $grid_answer_text_width:  120px;
 $grid_question_vertical_margins: 6px;
 $grid_top_answers_vertical_offset: 20px + 2*$grid_question_vertical_margins;
@@ -25,6 +25,12 @@ form.new_attempt {
 
   div[class*='question'] {
     position: relative;
+  }
+
+  .question_text {
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 6px;
   }
 
   span.introduction {
@@ -116,5 +122,14 @@ form.new_rapidfire_question, form.edit_rapidfire_question {
       display: inline-block;
     }
 
+  }
+}
+
+.field_with_errors {
+  input, select, textarea {
+    border: 1px solid red;
+  }
+  label {
+    color: red;
   }
 }

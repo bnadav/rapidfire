@@ -6,8 +6,8 @@ he:
         question_text: "תוכן השאלה"
         position: "מיקום"
         answer_options: "אפשרויות תשובה"
-        grid_view: "פועל"
-        introduction: "גזע"
+        grid_view: "תצוגת מטריצה"
+        introduction: "הקדמה"
   rapidfire:
     attempts:
       header: "נא לענות על השאלות הבאות"
@@ -17,4 +17,12 @@ he:
       new: "שאלה חדשה"
       question: "השאלה"
       grid_view: "תצוגת מטריצה"
-
+  activerecord:
+    errors:
+      models:
+        rapidfire/answer:
+          attributes:
+            answer_text:
+              greater_than_or_equal_to: "ערך לא חוקי"
+              less_than_or_equal_to: "ערך לא חוקי"
+              not_a_number: "ערך לא חוקי"
