@@ -11,7 +11,7 @@ $grid_top_answers_left_offset: 14px;
 
 
 body {
-  //direction: rtl;
+  direction: rtl;
 }
 
 form.new_attempt {
@@ -21,9 +21,13 @@ form.new_attempt {
     label {
       display: block;
     }
-    input[type='text'], select, textarea {
+    input[type='text'], select {
       display: inline-block;
       margin: 0 10px;
+    }
+    textarea {
+      display: block;
+      width: 70%;
     }
   }
 

@@ -28,3 +28,4 @@ he:
               greater_than_or_equal_to: "ערך לא חוקי"
               less_than_or_equal_to: "ערך לא חוקי"
               not_a_number: "ערך לא חוקי"
+              blank: "אין להשאיר שדה ריק"
