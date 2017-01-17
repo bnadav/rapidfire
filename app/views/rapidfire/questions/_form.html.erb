@@ -12,22 +12,20 @@
   <%= f.label :type %>
   <%= f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type" %>
 
-  <%= f.label :question_text %>
-  <%= f.text_field :question_text %>
+  <%= f.label :introduction %>
+  <%= f.text_field :introduction %>
 
-  <%= f.label :position %>
-  <%= f.number_field :position %>
+  <%= f.label :question_text %>
+  <%= f.text_area :question_text %>
 
   <%= f.label :answer_options %>
   <%= f.text_area :answer_options, rows: 5 %>
-  <fieldset>
-    <legend><%= t('rapidfire.questions.grid_view') -%></legend>
-    <%= f.label :grid_view %>
-    <%= f.check_box :grid_view %>
 
-    <%= f.label :introduction %>
-    <%= f.text_field :introduction %>
-  </fieldset>
+  <%= f.label :grid_view %>
+  <%= f.check_box :grid_view %>
+
+  <%= f.label :position %>
+  <%= f.number_field :position %>
 
 
   <h4>Other options</h4>
