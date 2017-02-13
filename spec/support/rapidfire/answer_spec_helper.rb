@@ -5,9 +5,9 @@ module Rapidfire
       FactoryGirl.create(:answer, :question => @question_checkbox, :answer_text => "hindi\r\ntelugu")
       FactoryGirl.create(:answer, :question => @question_checkbox, :answer_text => "hindi\r\nkannada")
 
-      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'mac')
-      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'mac')
-      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'windows')
+      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'a')
+      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'a')
+      FactoryGirl.create(:answer, :question => @question_select, :answer_text => 'c')
 
       FactoryGirl.create(:answer, :question => @question_radio, :answer_text => 'male')
       FactoryGirl.create(:answer, :question => @question_radio, :answer_text => 'female')

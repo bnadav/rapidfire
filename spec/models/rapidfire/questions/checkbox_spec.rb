@@ -9,7 +9,7 @@ describe Rapidfire::Questions::Checkbox do
     let(:question)  { FactoryGirl.create(:q_select) }
 
     it "returns options" do
-      expect(question.options).to match_array(["mac", "windows"])
+      expect(question.options).to match_array(["a", "b", "c"])
     end
   end
 

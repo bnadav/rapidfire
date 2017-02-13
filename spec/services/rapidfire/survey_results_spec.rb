@@ -50,8 +50,8 @@ describe Rapidfire::SurveyResults do
 
     it 'returns "select" type answers as a hash containing options as keys and number of answers as values' do
       answers = @results.find { |result| result.question == @question_select }
-      expect(answers.results['mac']).to eq(2)
-      expect(answers.results['windows']).to eq(1)
+      expect(answers.results['a']).to eq(2)
+      expect(answers.results['c']).to eq(1)
     end
 
     it 'returns "short" type answers as an array' do
