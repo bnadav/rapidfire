@@ -229,14 +229,11 @@ The typical flow about how to use this gem is:
      automatically generating the whole option range. In this type of question you can add 'suffix' annotation
      to the minimum and maximun options. You do this by adding the requested suffix between '<>' signs.
      For example these answer options: 
-
      ```
         1<first>
         5<last>
      ```
-
      will result in the following dropdown options:
-
      ```
      1 first
      2
@@ -244,7 +241,6 @@ The typical flow about how to use this gem is:
      4
      5 last
      ```
-
    - **Short** It takes a string as an answer. Short answer.
 
 4. Once the type is filled, you can optionally fill other details like
