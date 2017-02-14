@@ -224,6 +224,7 @@ The typical flow about how to use this gem is:
    - **Long** It needs a description as answer. Renders a textarea.
    - **Numeric** It takes a number as an answer
    - **Radio** It renders set of radio buttons by taking answer options.
+   - **Short** It takes a string as an answer. Short answer.
    - **Select** It renders a dropdown by taking answer options.
    - **Range** It renders a dropdown by taking minimum and maximum values for answer options, and 
      automatically generating the whole option range. In this type of question you can add 'suffix' annotation
@@ -244,8 +245,6 @@ The typical flow about how to use this gem is:
      4
      5 last
      ```
-
-   - **Short** It takes a string as an answer. Short answer.
 
 4. Once the type is filled, you can optionally fill other details like
    - **Question text** What is the question?
