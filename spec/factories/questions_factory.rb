@@ -28,6 +28,9 @@ FactoryGirl.define do
       answer_options  "a\r\nc\r\n"
     end
 
+    factory :q_range_with_suffixes, :class => "Rapidfire::Questions::Range" do
+      answer_options  "a<suffix1>\r\nc<suffix2>\r\n"
+    end
 
     factory :q_short, :class => "Rapidfire::Questions::Short" do
     end
