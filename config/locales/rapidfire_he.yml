@@ -10,7 +10,8 @@ he:
         introduction: "הקדמה"
   rapidfire:
     attempts:
-      header: "אנא ענו על השאלות הבאות"
+      header: "שאלון משוב"
+      footer: "תודה על שיתוף הפעולה!"
       save: "סיום"
     questions:
       header: "רשימת השאלות"
