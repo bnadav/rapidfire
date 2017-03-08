@@ -60,8 +60,7 @@ module Rapidfire
     def find_answer_option_index(answer_obj, text)
       options_array = answer_obj.question.answer_options.split("\n")
       index = options_array.find_index{ |option| option.strip == text }
-      index += 1 unless index.nil?
-      index ||= "text"
+      index = index.nil? ? -1 : index+1
       index.to_s
     end
   end
