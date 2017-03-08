@@ -27,6 +27,7 @@ module Rapidfire
               text
             end
 
+          # Save also the answer_option index corresponding to the given text
           answer.answer_index = find_answer_option_index(answer, text)
         end
       end
@@ -59,6 +60,8 @@ module Rapidfire
     def find_answer_option_index(answer_obj, text)
       options_array = answer_obj.question.answer_options.split("\n")
       index = options_array.find_index{ |option| option.strip == text }
+      index += 1 unless index.nil?
+      index ||= "text"
       index.to_s
     end
   end
