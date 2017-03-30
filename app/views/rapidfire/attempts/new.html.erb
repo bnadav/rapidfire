@@ -1,15 +1,17 @@
-<%= content_tag :div, class: ["container", @survey.name] do -%>
-  <h3><%= t('rapidfire.attempts.header') -%></h3>
-  <h4><%= @survey.introduction %></h4>
-  <br>
+<% cache @survey do %>
+  <%= content_tag :div, class: ["container", @survey.name] do -%>
+    <h3><%= t('rapidfire.attempts.header') -%></h3>
+    <h4><%= @survey.introduction %></h4>
+    <br>
 
-  <%= form_for([@survey, @attempt_builder]) do |f| %>
-    <%- @attempt_builder.answers.each do |answer| %>
-      <%= f.fields_for("#{answer.question.id}", answer, builder: Rapidfire::AttemptFormBuilder) do |answer_form| %>
-        <%= render_answer_form_helper(answer, answer_form) %>
+    <%= form_for([@survey, @attempt_builder]) do |f| %>
+      <%- @attempt_builder.answers.each do |answer| %>
+        <%= f.fields_for("#{answer.question.id}", answer, builder: Rapidfire::AttemptFormBuilder) do |answer_form| %>
+          <%= render_answer_form_helper(answer, answer_form) %>
+        <% end %>
       <% end %>
+      <h3><%= t('rapidfire.attempts.footer') -%></h3>
+      <%= f.submit t('rapidfire.attempts.save') %>
     <% end %>
-    <h3><%= t('rapidfire.attempts.footer') -%></h3>
-    <%= f.submit t('rapidfire.attempts.save') %>
-  <% end %>
-<% end -%>
+  <% end -%>
+<% end %>
