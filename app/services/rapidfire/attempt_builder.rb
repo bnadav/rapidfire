@@ -14,7 +14,7 @@ module Rapidfire
     def save!(options = {})
       params.each do |question_id, answer_attributes|
         if answer = @attempt.answers.find { |a| a.question_id.to_s == question_id.to_s }
-          text = answer_attributes[:answer_text].strip
+          text = answer_attributes[:answer_text]#.strip
 
           # in case of checkboxes, values are submitted as an array of
           # strings. we will store answers as one big string separated
