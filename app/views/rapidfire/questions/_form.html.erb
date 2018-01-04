@@ -9,42 +9,64 @@
     </ul>
   <% end %>
 
-  <%= f.label :type %>
-  <%= f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type" %>
+  <div class="form-group">
+    <%= f.label :type %>
+    <%= f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type", class: "form-control" %>
+  </div>
 
-  <%= f.label :introduction %>
-  <%= f.text_field :introduction %>
+  <div class="form-group">
+    <%= f.label :introduction, class: "control-label" %>
+    <%= f.text_field :introduction, class: "form-control"  %>
+  </div>
 
-  <%= f.label :question_text %>
-  <%= f.text_area :question_text %>
+  <div class="form-group">
+    <%= f.label :question_text %>
+    <%= f.text_area :question_text, class: "form-control" %>
+  </div>
 
-  <%= f.label :answer_options %>
-  <%= f.text_area :answer_options, rows: 5 %>
+  <div class="form-group">
+    <%= f.label :answer_options %>
+    <%= f.text_area :answer_options, rows: 5, class: "form-control"  %>
+  </div>
 
-  <%= f.label :grid_view %>
-  <%= f.check_box :grid_view %>
+  <div class="form-group">
+      <%= f.label :grid_view %>
+      <%= f.check_box :grid_view %>
+  </div>
 
+  <div class="form-group">
   <%= f.label :position %>
-  <%= f.number_field :position %>
+  <%= f.number_field :position , class: "form-control" %>
+  </div>
 
 
   <h4>Other options</h4>
   <hr/>
 
+  <div class="form-group">
   <%= f.label :answer_presence %>
   <%= f.check_box :answer_presence %>
+  </div>
 
+  <div class="form-group">
   <%= f.label :answer_minimum_length %>
-  <%= f.text_field :answer_minimum_length %>
+  <%= f.text_field :answer_minimum_length , class: "form-control" %>
+  </div>
 
+  <div class="form-group">
   <%= f.label :answer_maximum_length %>
-  <%= f.text_field :answer_maximum_length %>
+  <%= f.text_field :answer_maximum_length , class: "form-control" %>
+  </div>
 
+  <div class="form-group">
   <%= f.label :answer_greater_than_or_equal_to %>
-  <%= f.text_field :answer_greater_than_or_equal_to %>
+  <%= f.text_field :answer_greater_than_or_equal_to , class: "form-control" %>
+  </div>
 
+  <div class="form-group">
   <%= f.label :answer_less_than_or_equal_to %>
-  <%= f.text_field :answer_less_than_or_equal_to %>
+  <%= f.text_field :answer_less_than_or_equal_to , class: "form-control" %>
+  </div>
 
-  <%= f.submit submit_text %>
+  <%= f.submit submit_text, class: "btn btn-primary"%>
 <% end %>

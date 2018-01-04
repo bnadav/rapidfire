@@ -1,55 +1,9 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
-//@import "bootstrap-rtl";
-
-$grid_question_text_width: 280px;
-$grid_answer_text_width:  120px;
-$grid_question_vertical_margins: 6px;
-$grid_top_answers_vertical_offset: 20px + 2*$grid_question_vertical_margins;
-$grid_top_answers_left_offset: 14px;
 
 
-body {
-  direction: rtl;
-}
-
-form.new_attempt {
-  // Regular non grid questions
-  .question:not(.grid) {
-    @extend .well;
-    label {
-      display: block;
-    }
-    input[type='text'], select {
-      display: inline-block;
-      margin: 0 10px;
-    }
-    textarea {
-      display: block;
-      width: 70%;
-    }
-  }
-
-  div[class*='question'] {
-    position: relative;
-  }
-
-  .question_text {
-    font-size: 16px;
-    display: inline-block;
-    margin-bottom: 6px;
-  }
-
-  span.introduction {
-    position: absolute;
-    bottom: calc(2.25 * #{$grid_top_answers_vertical_offset});
-    font-weight: bold;
-    // bottom: 45px;
-  }
-
-
-  // grid questions
+@mixin grid($grid_question_text_width, $grid_answer_text_width,$grid_question_vertical_margins, $grid_top_answers_vertical_offset,$grid_top_answers_left_offset) {
   div.grid {
     // .well colors
     background-color: #f5f5f5;
@@ -100,6 +54,85 @@ form.new_attempt {
   div[class*='question'].grid + div:not(.grid) {
     margin-top: 20px;
   }
+  
+  form.new_attempt {
+    span.introduction {
+      bottom: calc(2.25 * #{$grid_top_answers_vertical_offset});
+    }
+  }
+}
+
+
+//@import "bootstrap-rtl";
+  @include grid($grid_question_text_width: 60px,
+  $grid_answer_text_width:  60px,
+  $grid_question_vertical_margins: 6px,
+  $grid_top_answers_vertical_offset: 27px,
+  $grid_top_answers_left_offset: 10px);
+
+@media screen and (min-width: 576px) {
+  @include grid($grid_question_text_width: 100px,
+  $grid_answer_text_width:  80px,
+  $grid_question_vertical_margins: 4pxs,
+  $grid_top_answers_vertical_offset: 32px,
+  $grid_top_answers_left_offset: 2px);
+}
+@media screen and (min-width: 768px) {
+  @include grid($grid_question_text_width: 200px,
+  $grid_answer_text_width:  80px,
+  $grid_question_vertical_margins: 6px,
+  $grid_top_answers_vertical_offset: 32px,
+  $grid_top_answers_left_offset: 10px);
+}
+
+@media screen and (min-width: 992px) {
+  @include grid($grid_question_text_width: 280px,
+  $grid_answer_text_width:  120px,
+  $grid_question_vertical_margins: 6px,
+  $grid_top_answers_vertical_offset: 32px,
+  $grid_top_answers_left_offset: 14px);
+}
+
+body {
+  direction: rtl;
+}
+
+form.new_attempt {
+  // Regular non grid questions
+  .question:not(.grid) {
+    @extend .well;
+    label {
+      display: block;
+    }
+    input[type='text'], select {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    textarea {
+      display: block;
+      width: 70%;
+    }
+  }
+
+  div[class*='question'] {
+    position: relative;
+  }
+
+  .question_text {
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  span.introduction {
+    position: absolute;
+   // bottom: calc(2.25 * #{$grid_top_answers_vertical_offset});
+    font-weight: bold;
+    // bottom: 45px;
+  }
+
+
+  // grid questions
 
   input[type='submit'] {
     @extend .btn-primary;
@@ -110,6 +143,7 @@ form.new_attempt {
 }
 
 form.new_rapidfire_question, form.edit_rapidfire_question {
+  @extend .form-horizontal;
   input, select, textarea {
     display: block;
     margin-bottom: 10px;

@@ -1,1 +1,3 @@
-<%= render partial: 'form', locals: { form: @question_form, url: survey_questions_path(@survey), method: :post, submit_text: 'Create Question' } %>
+<%= content_tag :div, class: "container" do -%>
+  <%= render partial: 'form', locals: { form: @question_form, url: survey_questions_path(@survey), method: :post, submit_text: 'Create Question' } %>
+<% end %>
