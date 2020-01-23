@@ -1,6 +1,6 @@
 module Rapidfire
   class AttemptsController < Rapidfire::ApplicationController
-    before_filter :find_survey!, :can_take_survey?
+    before_action :find_survey!, :can_take_survey?
 
     def new
       @attempt_builder = AttemptBuilder.new(attempt_params)
