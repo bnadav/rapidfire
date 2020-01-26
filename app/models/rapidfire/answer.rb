@@ -4,7 +4,7 @@ module Rapidfire
     belongs_to :attempt, inverse_of: :answers
 
     validates :question, :attempt, presence: true
-    validate  :verify_answer_text, :if -> { question.present?}
+    validate  :verify_answer_text, if: -> {question.present?}
 
     delegate :question_text, :introduction,  to: :question
 
